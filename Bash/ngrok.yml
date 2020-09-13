@@ -1,0 +1,18 @@
+authtoken: qweqweqwe
+
+tunnels:
+    flask:
+        proto: http
+        addr: 5000
+#    ttyd:5000
+#        proto: http
+#        addr: 7681
+    ssh:
+        proto: tcp
+        addr: 22
+    noVNC:
+        proto: tcp
+        addr: 8001
+#    Shellinabox:
+#        proto: tcp
+#        addr: 4200

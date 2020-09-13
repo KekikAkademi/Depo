@@ -1,0 +1,108 @@
+<!-- https://youtu.be/G-oxmvgVpZ4?t=5894 -->
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      ul {
+        margin: 0px;
+        margin-top: 10px;
+        padding: 0px;
+        list-style-type: none;
+        width: 300px;
+      }
+
+      li {
+        padding: 5px 5px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+      }
+
+      .kirmizi {
+        background-color: coral;
+      }
+
+      .yesil {
+        background-color: limegreen;
+      }
+    </style>
+
+    <title>Heeeeyaa</title>
+  </head>
+
+  <body>
+    <div id="uygulama">
+      <ul>
+        <li v-for="eleman in liste">{{ eleman }}</li>
+      </ul>
+      <hr />
+      <div v-for="(deger, anahtar) in personel">
+        <strong>{{ anahtar }}</strong> : <span>{{ deger }}</span>
+      </div>
+      <hr />
+      <p v-if="satisUyarisi" style="color: red; font-weight: bold;">Girdiğiniz Sayı Stok Adedinden Fazladır!</p>
+      <ul>
+        <!-- <li v-for="urun in urunListesi" v-if="urun.stok > 0"> -->
+        <li v-for="urun in urunListesi" :class="{'yesil' : urun.stok > 0,  'kirmizi' : urun.stok <= 0}">
+          <span>{{ urun.baslik }} - {{ urun['fiyat'] }}TL <br / > Stok : {{ urun.stok }}</span>
+          <hr>
+          <span style="margin-left: 100px">
+            <button :disabled="urun.stok <= 0" @click="urun.stok--">Sat</button>
+            <input type="text" v-model="urunAdet" style="width: 28px;"/>
+            <button :disabled="urun.stok <= 0" @click="adetSat(urun)">Adet Sat</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#uygulama",
+        data: {
+          urunAdet: 0,
+          satisUyarisi: false,
+          liste: ["Elma", "Armut", "Kiraz"],
+          personel: {
+            ad: "Muharrem",
+            soyAd: "Kiraz",
+            ePosta: "qwe@gmail.com",
+          },
+          urunListesi: [
+            {
+              baslik: "Kablo",
+              fiyat: 5,
+              stok: 50,
+            },
+            {
+              baslik: "Direnç",
+              fiyat: 3,
+              stok: 0,
+            },
+            {
+              baslik: "Soket",
+              fiyat: 7,
+              stok: 3,
+            },
+          ],
+        },
+        methods: {
+          adetSat(urun) {
+            if (this.urunAdet > urun.stok) {
+              this.satisUyarisi = true;
+            } else {
+              urun.stok = urun.stok - this.urunAdet;
+              this.satisUyarisi = false;
+            }
+          },
+        },
+        computed: {
+
+        },
+      });
+    </script>
+  </body>
+</html>

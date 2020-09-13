@@ -1,0 +1,4 @@
+Aşağıdaki işlevleri tanımlayın ve geliştirin:
+1. İki parametre alan bir Python işlevi yazın. Her iki parametre de tamsayı ise, işlev bu iki tamsayının toplamını döndürür. Bunlardan yalnızca biri tamsayı ise işlev bu tamsayıyı döndürür ve hiçbiri tamsayı değilse işlev dize olarak "Error" değerini döndürür.
+2. İki tamsayı alan bir Python işlevi yazın. Bu işlev, ikinci tamsayının ilk tamsayılarını bulur ve döndürür. Diyelim ki ilk parametre 8 ve ikinci parametre 3. Fonksiyonlar hesaplar ve 83 döndürür.
+3. Kullanıcıdan tamsayı değeri alan ve döndüren bir Python işlevi yazın. Kullanıcı bir tamsayı girmezse, kullanıcı geçerli bir değer girene kadar işlemi uyarır ve tekrarlar.

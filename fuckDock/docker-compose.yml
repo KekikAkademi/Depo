@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  dockerflask:
+    build: ./Kekik-Website
+    container_name: Kekik-Website
+    restart: always
+    expose:
+      - 8080

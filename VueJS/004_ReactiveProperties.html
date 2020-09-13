@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heeeeyaa</title>
+  </head>
+
+  <body>
+    <div id="uygulama">
+      <input type="text" v-model="yas" />
+      <p>JavaScript : {{ yas >= 18 ? 'Reşittir' : 'Değildir' }}</p>
+      <p>Metod : {{ yasKontrol() }}</p>
+      <p>Computed : {{ yasKontrolComp }}</p>
+      <hr />
+      <p>{{ sayi }}</p>
+      <button @click="sayi++">Arttır</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#uygulama",
+        data: {
+          yas: 0,
+          sayi: 0,
+        },
+        methods: {
+          yasKontrol() {
+            console.log("Method Çalıştı...");
+            return this.yas >= 18 ? "Reşittir" : "Değildir";
+          },
+        },
+        computed: {
+          yasKontrolComp() {
+            console.log("Computed Çalıştı...");
+            return this.yas >= 18 ? "Reşittir" : "Değildir";
+          },
+        },
+        watch: {
+          yas(yeniDeger, eskiDeger) {
+            console.log("Yeni : " + yeniDeger);
+            console.log("Eski : " + eskiDeger);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

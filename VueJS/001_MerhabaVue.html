@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heeeeyaa</title>
+  </head>
+
+  <body>
+    <div id="uygulama">
+
+      <h1>{{ mesaj }}</h1>
+      <p v-text="duzYazi"></p>
+      <!-- <a v-bind:href="link" v-bind:data-id="1">bu bir linktir</a> -->
+      <a :href="link" :data-id="1">bu bir linktir</a>
+      <!-- <p>{{ detaylar }}</p> -->
+      <p v-html="detaylar"></p>
+
+
+      <ol>
+        <li v-for="yapilacak in yapilacaklar">
+          {{ yapilacak.is }}
+        </li>
+      </ol>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var uyg = new Vue({
+        el: "#uygulama",
+        data: {
+          mesaj: "Merhaba Vue!",
+          link: "https://google.com.tr",
+          duzYazi: "lorem impsum sit amet",
+          detaylar: "<b>Bu bir yazı detayıdır..</b>",
+          yapilacaklar: [
+            { is: "JavaScript Öğren" },
+            { is: "Vue Öğren" },
+            { is: "Harika Bişey Yap" },
+            { is: "yeni veri için; uyg.yapilacaklar.push({ is: 'yeni iş' })"}
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
