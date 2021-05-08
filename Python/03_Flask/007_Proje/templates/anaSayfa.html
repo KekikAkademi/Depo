@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{{title}}</title>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="shortcut icon" href="" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+  <meta name="theme-color" content="#5eb9d7" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon"/>
+</head>
+
+<body class="{{template}}">
+  {% block content %}{% endblock %}
+
+  {% block content %}
+    <div class="container">
+      <h1>Flask-SQLAlchemy Tutorial</h1>
+      {% for user in users %}
+        <ul id="user.username">
+          <li>
+            <span class="field-name">User:</span>
+            <span class="field-value">{{ user.username }}</span>
+          </li>
+          <li>
+            <span class="field-name">Email:</span>
+            <span class="field-value">{{ user.email }}</span>
+          </li>
+          <li>
+            <span class="field-name">Created:</span>
+            <span class="field-value">{{ user.created }}</span>
+          </li>
+          <li>
+            <span class="field-name">Bio:</span>
+            <span class="field-value">{{ user.bio }}</span>
+          </li>
+          <li>
+            <span class="field-name">Admin:</span>
+            <span class="field-value">{{ user.admin }}</span>
+          </li>
+        </ul>
+      {% endfor %}
+    </div>
+  {% endblock %}
+
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function() {
+      var t   = document.createElement('script');
+      t.type  = 'text/javascript';
+      t.async = true;
+      t.id    = 'gauges-tracker';
+      t.setAttribute('data-site-id', '5eb6b8acd96b5b6f56ad80e9');
+      t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+      t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
+  
+</body>
+
+</html>

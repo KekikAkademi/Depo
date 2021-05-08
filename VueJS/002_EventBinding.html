@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heeeeyaa</title>
+  </head>
+
+  <body>
+    <div id="uygulama">
+      <!-- <input type="text" v-on:keypress="tusBasis($event)"> -->
+      <input type="text" @keypress="tusBasis($event)" />
+      <button v-on:click="arttir()">Arttır Babuş</button>
+      <input type="text" @keypress.enter="eventEnter($event)" />
+      <p>{{ sayi }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#uygulama",
+        data: {
+          sayi: 0,
+        },
+        methods: {
+          arttir() {
+            this.sayi++;
+          },
+
+          tusBasis(e) {
+            console.log(e);
+            if (e.key == "Enter") {
+              this.sayi += parseInt(e.target.value);
+            }
+          },
+          
+          eventEnter(q) {
+            this.sayi += parseInt(q.target.value);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<form action="" method="post" onsubmit="return false">
+    <h3>Youtube Downloader</h3>
+    <div class="search">
+        <input type="text" id="url" placeholder="Youtube URL">
+        <button type="submit" onclick="download()">Download</button>
+    </div>
+</form>
+
+<div class="loader">
+    Yükleniyor..
+</div>
+
+<div class="result" style="display: none">
+
+    <div class="video-item">
+        <img id="thumbnail" src="https://i.ytimg.com/vi/jiCSs0Weiqk/maxresdefault.jpg" alt="">
+        <div class="video-details">
+            <div class="title" id="title">HTML Dersleri -1 / Giriş</div>
+            <div class="author"><span>Yükleyen</span> <em id="author">PROTOTURK</em></div>
+            <div class="length"><span>Süre</span> <em id="length">00:14:50</em></div>
+            <div class="view"><span>Görüntülenme</span> <em id="views">132.590</em></div>
+        </div>
+    </div>
+
+    <ul id="sources"></ul>
+
+</div>
+
+<template id="item">
+    <li>
+        <div class="quality">
+            <span>Kalite</span>
+            <em>{quality}</em>
+        </div>
+        <div class="size">
+            <span>Boyut</span>
+            <em>{size}</em>
+        </div>
+        <a href="{url}&title={title}" download="{title}" target="_blank">Download</a>
+    </li>
+</template>
+
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    let sources = $('#sources')
+    let loader = $('.loader')
+    let result = $('.result')
+
+    function download() {
+        loader.show()
+        result.hide()
+        let url = $('#url').val()
+        $.get('/api/youtube?url=' + url, function (response) {
+            result.fadeIn(300)
+            $('#thumbnail').attr('src', response.info.thumbnail)
+            $('#title').text(response.info.title)
+            $('#length').text(response.info.length)
+            $('#views').text(response.info.views)
+            loader.hide()
+
+            sources.html('')
+            $.each(response.sources, function (key, source) {
+                let item = $('#item').html()
+                item = item.replace('{quality}', source.quality).replace('{size}', source.size).replace('{url}', source.url).replaceAll('{title}', response.info.title)
+                sources.append(item)
+            })
+
+        }, 'json')
+    }
+</script>
+
+</body>
+</html>

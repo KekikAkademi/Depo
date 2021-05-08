@@ -1,0 +1,4 @@
+pytube
+Flask
+flask_cors
+hurry.filesize

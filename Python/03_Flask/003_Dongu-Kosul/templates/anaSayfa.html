@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="TR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+</head>
+<body>
+    <h1>
+        Merhaba Dünya
+    </h1>
+    
+    {% if a>b %}
+        <h2>
+            {{ a }} büyüktür {{ b }}' den
+        </h2>
+    {% else %}
+        <h2>
+            {{ a }} küçüktür {{ b }}' den
+        </h2>
+    {% endif %}
+
+    
+    {% for sayi in tabloSayi %}
+
+    <li>
+        {{ sayi }}
+    </li>
+        
+    {% endfor %}
+        
+
+</body>
+</html>

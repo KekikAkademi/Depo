@@ -1,0 +1,65 @@
+/* ------------------------------------------------------------------------- */
+/*																			 */
+/*					    	coded by aczumuhayyel				 			 */
+/*		    		 aczumuhayyel [at] gmail [nokta] com					 */
+/*				         kodlarla fazla oynaşmayın           				 */
+/*																			 */
+/* ------------------------------------------------------------------------- */
+* {margin:0px; padding:0px; border:0px;}
+body {background:#FAFAFA; line-height:21px; color:#666; font-size:15px;}
+h1 {font-weight:normal; font-size:24px; line-height:32px;}
+h2 {font-weight:normal; font-size:21px; line-height:28px;}
+h3 {font-weight:normal; font-size:19px; line-height:24px;}
+li {list-style:none;}
+a {text-decoration:none; color:#aaa;}
+a:hover {text-decoration:none; color:#ddd;}
+img {border-radius:10px;}
+.shadow {box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);}
+p {padding-bottom:10px;}
+.clr {clear:both;}
+
+
+#acz {width:1000px; margin:auto;}
+
+.header {
+	width:100%; height:50px; line-height:50px; background:#F1F1F1;
+	border-bottom:1px solid #ccc; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+	position:relative; z-index:10;}
+	
+.logo {padding:7px 40px; float:left;}
+	.logo h1 {}
+
+.ara {float:right; padding-right:40px;}
+	.ara input {height:35px; line-height:25px; text-indent:5px; border:1px solid #ddd; font-size:15px; color:#242424; text-shadow:1px 1px #eee; }
+	.ara button {padding:10px; margin:10px;  background:#eee; border:1px solid #ddd; cursor:pointer;}
+	.ara button:hover {background:#aaa; color:#FAFAFA;}
+	
+.anasayfa {border:1px solid #ddd; position:relative; border-top:0px; border-bottom:0px; background:#FAFAFA;}
+	.anasayfa .icerik {text-align:center; padding:20px; line-height:50px; color:#888;}
+	
+.gonder {padding-left:10px; padding-top:10px; height:400px; background:#ddd; position:relative; z-index:3; border:1px solid #ddd; border-top:0px; text-align:center; font-size:20px;}
+	.gonder input {width:950px; margin:10px 0px 10px 10px; padding:5px; height:25px; line-height:25px; border:1px solid #ddd; color:#242424; }
+	.gonder button {background:#eee; border:1px solid #ddd; cursor:pointer;}
+	.gonder textarea {width:960px; margin:10px; height:25px; line-height:25px; border:1px solid #ddd; color:#242424;}
+	
+.footer {
+	width:100%; height:50px; line-height:50px; background:#F1F1F1;
+	border-top:1px solid #ccc; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+	position:relative; z-index:10;}
+	
+
+@media only screen and (max-width:1230px) and (min-width:990px){ 
+#acz {width:1000px; margin:auto;}
+ }
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+#acz {width:480px; margin:auto;}
+.ara input {width:150px;}
+.gonder textarea {width:440px;}
+.gonder input {width:430px;}
+}
+@media only screen and (max-width: 479px) {
+#acz {width:400px; margin:auto;}
+.ara input {width:100px;}
+.gonder textarea {width:340px;}
+.gonder input {width:330px;}
+}

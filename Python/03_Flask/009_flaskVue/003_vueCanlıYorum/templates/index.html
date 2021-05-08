@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="grid-container">
+  <header class="header text-center">
+    <img
+      src="https://cdn1.bbcode0.com/uploads/2020/6/4/9fffd963bdebe615daae66c45a90907a-full.png"
+      width="250"
+    />
+  </header>
+  <main class="content">
+    <div class="content-text">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto alias dolores minus atque hic necessitatibus aperiam fugit, quos cumque perspiciatis quia a possimus non veniam, facere adipisci doloribus cum placeat!
+    </div>
+  </main>
+  <section class="mood">
+    <div class="row">
+      <div class="col text-center">
+        <div class="mood-percentage">[[ mutlu ]]%</div>
+        <div>Mutlu</div>
+      </div>
+      <div class="col text-center">
+        <div class="mood-percentage">[[ notr ]]%</div>
+        <div>Nötr</div>
+      </div>
+      <div class="col text-center">
+        <div class="mood-percentage">[[ uzgun ]]%</div>
+        <div>Üzgün</div>
+      </div>
+    </div>
+  </section>
+  <section class="comment-section">
+    <div v-for="yorum in yorumlar">
+      <yorum :yorum="yorum" v-bind:key="yorum.id"> </yorum>
+    </div>
+  </section>
+  <section class="form-section">
+    <form class="form" @submit.prevent="yorumEkle">
+      <div class="form-group">
+        <input type="text" class="form-control" v-model="kAdi" placeholder="Kulanıcı Adı" />
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" v-model="yorum" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Yorum ekle</button>
+    </form>
+  </section>
+</div>
+
+{% endblock %}

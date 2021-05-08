@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heeeeyaa</title>
+
+    <style>
+      .kutu {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #660;
+        background-color: #fbbd08;
+        margin-bottom: 10px;
+      }
+
+      .mavi {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="uygulama">
+      <div class="kutu" :class="classAdi"></div>
+      <div class="kutu" :class="{ mavi : !maviMi }"></div>
+      <button @click="maviMi = !maviMi">Ekle / Kaldır</button>
+      <hr />
+      <div class="kutu" :class="bakalim"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#uygulama",
+        data: {
+          classAdi: "mavi",
+          maviMi: true,
+        },
+        computed: {
+          bakalim() {
+            return { mavi: this.maviMi };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

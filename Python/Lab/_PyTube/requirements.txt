@@ -1,0 +1,2 @@
+git+https://github.com/nficano/pytube.git
+hurry.filesize==0.9

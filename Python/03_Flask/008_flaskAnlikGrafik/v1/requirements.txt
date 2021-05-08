@@ -1,0 +1,4 @@
+Flask==1.1.2
+Flask_Sitemap==0.3.0
+waitress==1.4.3
+psutil==5.7.0

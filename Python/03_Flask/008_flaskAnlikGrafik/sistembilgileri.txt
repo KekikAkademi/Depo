@@ -1,0 +1,95 @@
+======================================== Sistem Bilgisi ========================================
+Sistem: Linux
+Kullanıcı Adı: kekik-Manjaro
+Sürüm: 5.6.12-1-MANJARO
+Versiyon: #1 SMP PREEMPT Sun May 10 14:36:43 UTC 2020
+Makine: x86_64
+İşlemci: 
+======================================== Boot Zamanı ========================================
+Boot Zamanı: 2020/5/26 18:9:32
+======================================== CPU Bilgisi ========================================
+Fiziksel Çekirdekler: 4
+Bütün Çekirdekler: 8
+Max Frekans: 3600.00 Mhz
+Min Frekans: 400.00 Mhz
+Geçerli Frekans: 1686.32 Mhz
+Çekirdek Başına CPU Kullanımı:
+Çekirdek 0: 5.9 %
+Çekirdek 1: 5.0 %
+Çekirdek 2: 5.9 %
+Çekirdek 3: 5.1 %
+Çekirdek 4: 2.0 %
+Çekirdek 5: 2.0 %
+Çekirdek 6: 8.1 %
+Çekirdek 7: 3.0 %
+Toplam CPU Kullanımı: 4.8 %
+======================================== Bellek Bilgisi ========================================
+Toplam: 7.55 GB
+Mevcut: 4.72 GB
+Kullanılan: 2.15 GB
+Yüzde: 37.5 %
+==================== SWAP ====================
+Toplam: 0.00 B
+Boşta: 0.00 B
+Kullanılan: 0.00 B
+Yüzde: 0.0 %
+======================================== Disk Bilgileri ========================================
+Bölümler ve Kullanımı:
+=== Cihaz: /dev/sdb2 ===
+  Bağlama noktası: /
+  Dosya sistemi türü: ext4
+  Toplam Boyut: 233.43 GB
+  Kullanılan: 33.73 GB
+  Boşta: 187.78 GB
+  Yüzde: 15.2 %
+=== Cihaz: /dev/sdb1 ===
+  Bağlama noktası: /boot/efi
+  Dosya sistemi türü: vfat
+  Toplam Boyut: 299.40 MB
+  Kullanılan: 280.00 KB
+  Boşta: 299.12 MB
+  Yüzde: 0.1 %
+=== Cihaz: /dev/loop1 ===
+  Bağlama noktası: /var/lib/snapd/snap/core18/1754
+  Dosya sistemi türü: squashfs
+  Toplam Boyut: 55.00 MB
+  Kullanılan: 55.00 MB
+  Boşta: 0.00 B
+  Yüzde: 100.0 %
+=== Cihaz: /dev/loop0 ===
+  Bağlama noktası: /var/lib/snapd/snap/rpi-imager/28
+  Dosya sistemi türü: squashfs
+  Toplam Boyut: 94.38 MB
+  Kullanılan: 94.38 MB
+  Boşta: 0.00 B
+  Yüzde: 100.0 %
+=== Cihaz: /dev/loop2 ===
+  Bağlama noktası: /var/lib/snapd/snap/snapd/7264
+  Dosya sistemi türü: squashfs
+  Toplam Boyut: 27.12 MB
+  Kullanılan: 27.12 MB
+  Boşta: 0.00 B
+  Yüzde: 100.0 %
+Toplam okuma: 1.90 GB
+Toplam yazma: 4.05 GB
+======================================== Ağ Bilgisi ========================================
+=== Arayüz: lo ===
+  IP Adresi: 127.0.0.1
+  Ağ Maskesi: 255.0.0.0
+  IP Yayını: None
+=== Arayüz: lo ===
+=== Arayüz: lo ===
+  MAC Adresi: 00:00:00:00:00:00
+  Ağ Maskesi: None
+  MAC Yayını: None
+=== Arayüz: wlp2s0 ===
+  IP Adresi: 192.168.1.134
+  Ağ Maskesi: 255.255.255.0
+  IP Yayını: 192.168.1.255
+=== Arayüz: wlp2s0 ===
+=== Arayüz: wlp2s0 ===
+  MAC Adresi: ac:d5:64:cd:ca:df
+  Ağ Maskesi: None
+  MAC Yayını: ff:ff:ff:ff:ff:ff
+Gönderilen Toplam Bayt 58.35 MB
+Alınan Toplam Bayt: 233.14 MB

@@ -1,0 +1,10 @@
+| urun_baslik            | urun_link                                                                | urun_gorsel                                                                       | urun_fiyat   |
+|------------------------|--------------------------------------------------------------------------|-----------------------------------------------------------------------------------|--------------|
+| Cam Set Üstü Ocak      | https://www.bim.com.tr/aktuel-urunler/cam-set-ustu-ocak/kral.aspx        | https://www.bim.com.tr/Uploads/aktuel-urunler/624_buyuk_543X467_set-ustu.jpg      | 359,00₺      |
+| Pamuklu Halı           | https://www.bim.com.tr/aktuel-urunler/pamuklu-hali/aktuel.aspx           | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_hali.jpg          | 59,90₺       |
+| Püsküllü Koltuk Örtüsü | https://www.bim.com.tr/aktuel-urunler/puskullu-koltuk-ortusu/aktuel.aspx | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_koltuk-ortusu.jpg | 19,90₺       |
+| 3'lü Vakumlu Hurç Seti | https://www.bim.com.tr/aktuel-urunler/3-lu-vakumlu-hurc-seti/aktuel.aspx | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_vakumlu-hurc.jpg  | 14,90₺       |
+| Desenli Eşarp          | https://www.bim.com.tr/aktuel-urunler/desenli-esarp/aktuel.aspx          | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_desenli-esarp.jpg | 14,90₺       |
+| Kadın Wellsoft Patik   | https://www.bim.com.tr/aktuel-urunler/kadin-wellsoft-patik/aktuel.aspx   | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_kadin-patik.jpg   | 6,95₺        |
+| Çocuk Wellsoft Patik   | https://www.bim.com.tr/aktuel-urunler/cocuk-wellsoft-patik/aktuel.aspx   | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_cocuk-patik.jpg   | 5,95₺        |
+| Keten Ayakkabı         | https://www.bim.com.tr/aktuel-urunler/keten-ayakkabi/aktuel.aspx         | https://www.bim.com.tr/Uploads/aktuel-urunler/624_kucuk_543X467_keten-erkek.jpg   | 9,95₺        |

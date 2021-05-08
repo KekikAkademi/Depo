@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heeeeyaa</title>
+  </head>
+
+  <body>
+    <div id="uygulama">
+      <button @click="goster = !goster">Göster / Gizle</button>
+      <p v-if="goster">Burası sayfa açıldığında gösterilecek</p>
+      <p v-else-if="!goster">Burası buton yardımıyla gösterilecek</p>
+      <p v-else>Aksi durumda gösterilecek</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#uygulama",
+        data: {
+          goster: true,
+        },
+      });
+    </script>
+  </body>
+</html>
