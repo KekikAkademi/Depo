@@ -46,4 +46,9 @@ sudo apt install tmux -y
 wget https://raw.githubusercontent.com/gpakosz/.tmux/master/.tmux.conf
 sudo apt install jq -y
 sudo apt install ffmpeg -y
-chsh -s $(which zsh) && zsh
+sudo chsh -s $(which zsh) && zsh
+git config --global user.email "keyiflerolsun@gmail.com"
+git config --global user.name "keyiflerolsun"
+git config --global credential.helper "cache --timeout=3600"
+
+# usermod -aG sudo keyiflerolsun
