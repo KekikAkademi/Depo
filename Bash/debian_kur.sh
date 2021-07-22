@@ -38,6 +38,12 @@ sudo apt install build-essential -y
 sudo apt install libncurses5-dev -y
 sudo gem install colorls
 
+# docker
+sudo apt install docker docker-compose -y
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo usermod -aG docker $USER
+
 # keyif
 rm -rf ~/.zshrc && wget https://raw.githubusercontent.com/KekikAkademi/Depo/master/Bash/.zshrc
 sudo apt install screenfetch -y
