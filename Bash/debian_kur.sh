@@ -2,7 +2,7 @@
 
 # WSL Debian Temel Kurulum Paketi
 
-sudo apt update -y && sudo apt upgrade -y
+sudo apt-get update -y && sudo apt-get -y upgrade && sudo apt-get dist-upgrade -y
 sudo apt install curl -y
 
 # Yüklemek İçin: `curl https://raw.githubusercontent.com/KekikAkademi/Depo/master/Bash/debian_kur.sh | bash`
@@ -44,12 +44,23 @@ sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
 
+# cockpit project
+sudo apt install cockpit
+sudo systemctl start cockpit
+
+# aaPanel
+wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && sudo bash install.sh aapanel
+rm -rf install.sh
+# bash /etc/init.d/bt default
+
 # keyif
 rm -rf ~/.zshrc && wget https://raw.githubusercontent.com/KekikAkademi/Depo/master/Bash/.zshrc
+echo "KekikAkademi" > /etc/hostname
 sudo apt install screenfetch -y
 sudo apt install neofetch -y
 sudo apt install tmux -y
 wget https://raw.githubusercontent.com/gpakosz/.tmux/master/.tmux.conf
+echo "set -g mouse on" >> ~/.tmux.conf
 sudo apt install jq -y
 sudo apt install ffmpeg -y
 sudo chsh -s $(which zsh) && zsh
