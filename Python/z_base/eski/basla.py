@@ -17,11 +17,7 @@ def acilisSayfasi():
     """) # Seçeneklerimizi ayarladık
 
     konum = os.getcwd()
-    if isletim_sistemi == "Windows":
-        konum = konum.split("\\")
-    else:
-        konum = konum.split("/")
-
+    konum = konum.split("\\") if isletim_sistemi == "Windows" else konum.split("/")
     secenek = str(input(f"{kirmizi}{oturum}:{l_mavi}~/../{konum[-2] + '/' + konum[-1]} >> {yesil}")) # Kullanıcı için input oluşturduk
 
     #-----------------------#

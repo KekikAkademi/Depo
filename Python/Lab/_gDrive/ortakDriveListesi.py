@@ -11,10 +11,4 @@ def ortak_drive_listesi():
     print(json.dumps(ortak_drivelar, indent=2, sort_keys=False, ensure_ascii=False))
     return
 
-    mesaj = ""
-    for drive in ortak_drivelar['drives']:
-        mesaj += f"`{drive['name']}`\n"
-
-    return mesaj
-
 print(ortak_drive_listesi())

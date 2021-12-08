@@ -42,8 +42,7 @@ class Spider(object):
     def get_domain(self, url):
         _domain = re.findall(r'https?://(.*?)\/', url)
         _domain2 = re.findall(r'https?://(.*?)$', url)
-        r_domain =  _domain[0] if _domain else _domain2[0]
-        return r_domain
+        return _domain[0] if _domain else _domain2[0]
 
     def set_link(self, link):
         if "javascript:" in link:
@@ -117,7 +116,7 @@ class Spider(object):
         _link = ""
         if "#" in link:
             for i in link:
-                if i == "#" or point is True:
+                if i == "#" or point:
                     point = True
                     continue
                 _link += i
@@ -194,12 +193,7 @@ class Spider(object):
             th_count += 1
             l_visit_urls -= 1
             self.logger.info("Started Thread-{}".format(th_count))
-            if th_count%max_thrad == 0:
-                self.logger.info("Waiting for Thread Process...")
-                for t in thread_list:
-                    t.join()
-                self.logger.info("Thread Process Finished..")
-            elif l_visit_urls < 5:
+            if th_count % max_thrad == 0 or l_visit_urls < 5:
                 self.logger.info("Waiting for Thread Process...")
                 for t in thread_list:
                     t.join()
@@ -238,5 +232,4 @@ class Spider(object):
             print(stat)
         return self.visited_urls, self.output_forms
 
-if __name__ == '__main__':
-    pass
+pass

@@ -13,7 +13,7 @@ def bip(client, message):
 
     mesaj = f"[{message.from_user.first_name}](tg://user?id={message.from_user.id}) | `bip` Komutunu Verdi!\n\n"
 
-    for i in range(1, 5):
+    for _ in range(1, 5):
         winsound.Beep(random.randint(57, 767), 1000)
 
     mesaj += "Hallettim !"

@@ -1,9 +1,9 @@
 import requests, sys, time # program içinde kullanılacak modüllerimiz
 
 # program ve raporlamalar için kullanacağımız değişkenleri oluşturuyoruz
-sql_inj = list() # hatalar dosyasından okunacak sql hataları bu listeye eklenecek
-urller = list() # dosyadan okunacak url'ler bu listeye dahil edilecek
-inj_site = list() # sql injection tespit edilen url'ler dosyaya yazılmak için bu listede toplanacak
+sql_inj = []
+urller = []
+inj_site = []
 kontrol = 0 # while döngüsü için kontrol değişkeni
 inj_url = 0 # program sonlanırken verilecek istatistik için
 hatali_url = 0 # program sonlanırken verilecek istatistik için
@@ -34,11 +34,9 @@ try: # herhangi bir hata için
                         for hata in sql_inj: # sql_inj listemizde bulunan hataları tek tek işleme sokuyoruz
                             if hata in texteCevir: # eğer hatamız texte çevirdiğimiz içeriğin içinde varsa
                                 print("SQLi:", url, "\n")
-                                kontrol += 1 # while döngüsünü kontol etmek için kontrol değişkenimizi 1 artırıyoruz
                                 inj_url += 1 # istatistik için injectable url sayısını 1 artırıyoruz
                                 inj_site.append(url) # dosyaya yazılmak üzere inj_site listemize ekliyoruz
-                            else: # eğer hatamız texte çevirdiğimiz içeriğin içinde yoksa
-                                kontrol += 1 # while döngüsünü kontol etmek için kontrol değişkenimizi 1 artırıyoruz
+                            kontrol += 1 # while döngüsünü kontol etmek için kontrol değişkenimizi 1 artırıyoruz
                     elif urlKaynak.status_code == 500: # eğer bağlandığımızda dönen http kodu 500 ise
                         print("Blind SQL var!") # yaz
                         inj_site.append(url+" Blind") # sonuna "Blind" notu ekleyip dosyaya yazılmak üzere inj_site listemize ekliyoruz
@@ -50,9 +48,8 @@ try: # herhangi bir hata için
                     continue # hata alsan bile döngüye devam et
         print("\nTarama bitti.", time.strftime('%X'), "\n")
         print("{} / {} URL'de SQL Injection bulundu. {} URL hata verdi ve taranamadı." .format(len(urller), inj_url, hatali_url))
-        sdosya = open(sys.argv[2], "w")
-        sdosya.writelines(inj_site)
-        sdosya.close()
+        with open(sys.argv[2], "w") as sdosya:
+            sdosya.writelines(inj_site)
         print("\n"+sys.argv[2], "dosyasına kaydedildi.")
     else:
         print("Parametre Hatalı")

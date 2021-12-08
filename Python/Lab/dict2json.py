@@ -1,10 +1,8 @@
 import os, json
 
 def dict2json(sozluk:dict, dosya_adi:str):
-    liste = []
     if not os.path.isfile(dosya_adi):
-        liste.append(sozluk)
-
+        liste = [sozluk]
         with open(dosya_adi, mode='w') as f:
             f.write(json.dumps(liste, indent=2, ensure_ascii=False, sort_keys=False))
     else:

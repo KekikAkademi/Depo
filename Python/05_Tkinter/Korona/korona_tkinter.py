@@ -33,10 +33,10 @@ while True:
     cerceve = Canvas(pencere, width=810, height=490, background="black")
     cerceve.create_image(400, 240,  image=arkaplan_image)
     cerceve.place(x=-3,y=-3)
-    
-    cikisButonu = Button(pencere, text=f"Pencereyi Kapat", command = acilCikis)
+
+    cikisButonu = Button(pencere, text='Pencereyi Kapat', command = acilCikis)
     cikisButonu.pack(side=BOTTOM)
-    
+
     for bilgi in yazilan_veri['koronaVerileri']:
         vakaSayisi = Label(pencere, text=(bilgi['vakaSayisi']['dunyaGeneli']), bg="white", fg="black", font="Helvetica 25 bold")
         vakaSayisi.place(x=430, y=185)

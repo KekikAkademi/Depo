@@ -57,10 +57,7 @@ with Workbook('birgun_net.xlsx') as workbook:
     worksheet.set_column(3,3, 23.72*carpan, italik) # Başlık
     worksheet.set_column(4,4, 51.89*carpan, italik) # Açıklama
 
-    # Liste verilerini yaz
-    satir = 0
-    for urun in db.all():
-        satir += 1
+    for satir, urun in enumerate(db.all(), start=1):
         worksheet.write(satir, 0, urun['tarih'] )
         worksheet.write(satir, 1, urun['kategori'])
         worksheet.write_url(satir, 2, urun['link'], string='Web Sayfası')

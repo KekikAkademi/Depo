@@ -85,8 +85,6 @@ def WindowsBildirimi():                              # WindowsBildirimi adında 
         from win10toast import ToastNotifier         # Windows'a bildirim göndermek için
         bildirim = ToastNotifier()
         bildirim.show_toast(f"{pencere_basligi}", "Başlıyoruz :)", icon_path=None, duration=10, threaded=True)
-    else:
-        pass
 WindowsBildirimi()
 #----------------------------------------------------#
 
@@ -95,13 +93,13 @@ def DiscUdemy():
     #-------------------------------------------------------------------------------------------#
     udemy_baslik = []                                                   # Boş Tablo Oluşturduk  #
     udemy_link = []                                                     # Boş Tablo Oluşturduk  #
+    kimlik = {'User-Agent': '@KekikAkademi'}                        # Websitesine istek yollarken kimlik bilgimizi sunuyoruz
     #-------------------------------------------------------------------------------------------#
 
-    for sayfa in range(1, 3):                                           # Sayfa Sayısı | örn:(1, 3) {2 Sayfa Tarar [1-2]}
+    for sayfa in range(1, 3):                                       # Sayfa Sayısı | örn:(1, 3) {2 Sayfa Tarar [1-2]}
         #----------------------------------------------------------------------------------------------------------------------------------#
         sayfa = str(sayfa)                                              # int olan değerimizi str yapıyoruz
         link = 'https://www.discudemy.com/language/Turkish/' + sayfa    # sayfalar arasında gezinmek için
-        kimlik = {'User-Agent': '@KekikAkademi'}                        # Websitesine istek yollarken kimlik bilgimizi sunuyoruz
         istek = requests.get(link)                                      # link'e istek göderiyoruz ve gelen veriyi kaydediyoruz
         kaynak = BeautifulSoup(istek.text, 'html5lib')                  # bitifulsup ile html'i işlememiz gerekiyor / html5lib'i kullandık
         print(f"\t{Fore.RED}[*] {link} {Fore.CYAN}| {Fore.RED}Burdayım !")# Bulunduğun Link'i Terminale Yazdır
@@ -146,7 +144,7 @@ def DiscUdemy():
                     print(f"{Fore.GREEN}[+] {Fore.YELLOW}{gelen_udemy} {Fore.CYAN}| {Fore.GREEN}Buldum !")
                     print(f"\t {Fore.LIGHTBLUE_EX}Değişken : // gelen_udemy\n")      # ilgili Değişkeni Terminale Yazdır
                     #sleep(1)                                                        # Bekleme Ver
-        #-----------------------------------------------------------------------------------------------------------------------#
+            #-----------------------------------------------------------------------------------------------------------------------#
 
     #-------------------------------------------#
     print("\n\n\n\tSiliyorum...")               # Sildiğini Bildir
@@ -158,30 +156,23 @@ def DiscUdemy():
     #-------------------------------------------#
 
     #-------------------------------------------------------------------------------------------------------------------------#
-    for adet in range(0, len(udemy_baslik)):                    # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
-        gelen_udemy_kaydet = open("DiscUdemy.txt", "a+")        # .txt oluştur
-        gelen_udemy_kaydet.write(f"{Fore.RED}{udemy_baslik[adet]}\n")     # Başlık[adet] yaz satır atla
-        gelen_udemy_kaydet.write(f"{Fore.CYAN}{udemy_link[adet]}\n\n")     # Link[adet] Yaz satır atla, satır atla
-        gelen_udemy_kaydet.close()                              # dosyayı kapat
+    for adet in range(len(udemy_baslik)):                # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
+        with open("DiscUdemy.txt", "a+") as gelen_udemy_kaydet:
+            gelen_udemy_kaydet.write(f"{Fore.RED}{udemy_baslik[adet]}\n")     # Başlık[adet] yaz satır atla
+            gelen_udemy_kaydet.write(f"{Fore.CYAN}{udemy_link[adet]}\n\n")     # Link[adet] Yaz satır atla, satır atla
     #-------------------------------------------------------------------------------------------------------------------------#
 
     #---------------------------------------------------------------------------#
     icerik = open("DiscUdemy.txt", "r+").read()                 # Dosyayı oku   #
     print(icerik)                                               # Ekrana Yaz    #
-    #---------------------------------------------------------------------------#
-
-    #---------------------------------------------------------------------------------------------#
-    satir_say = open("DiscUdemy.txt")
-    satir = 0
-    for line in satir_say:
-        satir = satir+1
-    print(f"\n\t{Fore.YELLOW} Bulunup, Yazılan Link Sayısı{Fore.YELLOW} >> {Fore.RED}" + f"{int(satir/3)}")
-    satir_say.close()
+    with open("DiscUdemy.txt") as satir_say:
+        satir = sum(1 for _ in satir_say)
+        print(f"\n\t{Fore.YELLOW} Bulunup, Yazılan Link Sayısı{Fore.YELLOW} >> {Fore.RED}" + f"{int(satir/3)}")
     os.remove("DiscUdemy.txt")                                  # Dosyayı Sil  /Fore.İle Yazıldı 
     #---------------------------------------------------------------------------------------------#
 
 def RealDiscount():
-    for sayfa in range(1, 2):                               # Sayfa Sayısı | örn:(1, 3) {2 Sayfa Tarar [1-2]}
+    for sayfa in range(1, 2):                           # Sayfa Sayısı | örn:(1, 3) {2 Sayfa Tarar [1-2]}
         #------------------------------------------------------------------------------------------------------------------------#
         sayfa = str(sayfa)                                  # int olan değerimizi str yapıyoruz
         link = 'https://www.real.discount/new/' + sayfa     # sayfalar arasında gezinmek için
@@ -203,41 +194,28 @@ def RealDiscount():
                 gelen_udemy = udemy_linkler['href']
                 print(f"{Fore.GREEN}[+] {Fore.YELLOW}{gelen_udemy} {Fore.CYAN}| {Fore.GREEN}Buldum !\n") # gelen_udemy değerimizi (linkimizi) yazdık
 
-                #----------------------------------------------------#
-                gelen_udemy_kaydet = open("UdemyeGiderken.txt", "a")
-                gelen_udemy_kaydet.write(gelen_udemy + "\n")
-                gelen_udemy_kaydet.close()
-                #----------------------------------------------------#
+                with open("UdemyeGiderken.txt", "a") as gelen_udemy_kaydet:
+                    gelen_udemy_kaydet.write(gelen_udemy + "\n")
+                            #----------------------------------------------------#
 
-    #---------------------------------------------------------------------------------------------#
-    satir_say = open("UdemyeGiderken.txt")
-    satir = 0
-    for line in satir_say:
-        satir = satir+1
-    print(f"\n\t{Fore.GREEN} Bulunup, Yazılan Link Sayısı{Fore.YELLOW} >> {Fore.RED}{satir}")
-    satir_say.close()
+    with open("UdemyeGiderken.txt") as satir_say:
+        satir = sum(1 for _ in satir_say)
+        print(f"\n\t{Fore.GREEN} Bulunup, Yazılan Link Sayısı{Fore.YELLOW} >> {Fore.RED}{satir}")
     #---------------------------------------------------------------------------------------------#
 
 def CiftLinkSil():
     #---------------------------------------------------------#
     lines_seen = set()              # holds lines already seen
-    outfile = open("RealDiscount.txt", "a")
-    for line in open("UdemyeGiderken.txt", "r"):
-        if line not in lines_seen:  # not a duplicate
-            outfile.write(line)
-            lines_seen.add(line)
-    outfile.close()
+    with open("RealDiscount.txt", "a") as outfile:
+        for line in open("UdemyeGiderken.txt", "r"):
+            if line not in lines_seen:  # not a duplicate
+                outfile.write(line)
+                lines_seen.add(line)
     os.remove("UdemyeGiderken.txt")
     print("\n\t\t" + Fore.YELLOW + "Çift Linkler Bulunup Silindi ve RealDiscount.txt Kaydedildi!!!" + Fore.WHITE + "\n")
-    #---------------------------------------------------------#
-
-    #---------------------------------------------------------#
-    satir_say = open("RealDiscount.txt")
-    satir = 0
-    for line in satir_say:
-        satir = satir+1
-    print(f"\n\t{Fore.GREEN} Kalan Link Sayısı{Fore.YELLOW} >> {Fore.RED}{satir}")
-    satir_say.close()
+    with open("RealDiscount.txt") as satir_say:
+        satir = sum(1 for _ in satir_say)
+        print(f"\n\t{Fore.GREEN} Kalan Link Sayısı{Fore.YELLOW} >> {Fore.RED}{satir}")
     #---------------------------------------------------------#
 
 #-----------------------------------#
@@ -257,23 +235,18 @@ def AcilisSayfasi():
     else:
         konum = "/"
     secenek = str(input(f"{Fore.RED}{oturum}:{Fore.LIGHTBLUE_EX}~/../{konum[-2] + '/' + konum[-1]} >> {Fore.GREEN}")) # Kullanıcı için input oluşturduk
+    Temizle()           # Temizle fonksiyonunu çalıştır
     #-----------------------#
-    if secenek == '1':      # Eğer 1 i seçerse
-        Temizle()           # Temizle fonksiyonunu çalıştır
+    if secenek == '1':  # Eğer 1 i seçerse
         print(Fore.LIGHTBLUE_EX + logo)
         print(ust_bilgi)    # Üst Bilgi fonksiyonunu çalıştır
         DiscUdemy()         # DiscUdemy fonksiyonunu çalıştır
-    #-----------------------#
-    elif secenek == '2':    # Eğer 2 yi seçerse
-        Temizle()           # Temizle fonksiyonunu çalıştır
+    elif secenek == '2':# Eğer 2 yi seçerse
         print(Fore.LIGHTBLUE_EX + logo)
         print(ust_bilgi)    # Üst Bilgi fonksiyonunu çalıştır
         RealDiscount()      # RealDiscount fonksiyonunu çalıştır
         CiftLinkSil()
-    #-----------------------#
-    else:                   # Eğer harici bişey seçerse
-        pass                # Aldırış etme (çökme)
-        Temizle()           # Temizle fonksiyonunu çalıştır
+    else:               # Eğer harici bişey seçerse
         AcilisSayfasi()     # AcilisSayfasi fonksiyonunu çalıştır
 
 AcilisSayfasi()

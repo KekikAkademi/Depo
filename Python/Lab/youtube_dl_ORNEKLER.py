@@ -84,10 +84,7 @@ def ytDLSiki(link, cikti=None):
             }],
         })
     else:
-        parametreler.update({
-            'format': 'best',
-        })
-
+        parametreler['format'] = 'best'
     ytdl = youtube_dl.YoutubeDL(parametreler)
 
     ytdl.download([link])

@@ -12,8 +12,6 @@ def WindowsTerminaliGizle():
         import win32console, win32gui
         terminal = win32console.GetConsoleWindow()
         win32gui.ShowWindow(terminal, 0)
-    else:
-        pass
 #WindowsTerminaliGizle()
 # -- pyinstaller -i img/trendyol.ico --onefile --noconsole gui.py --
 
@@ -61,10 +59,10 @@ class Pencere(QWidget):
 
         # Dikey Düzeni(vBox'ı) Çağır
         self.setLayout(vBox)                                    # vBox'ımızı Ana Yerleşim olarak belirle
-        
+
         #-----------------------------------------------#
         self.show()                                     # Pencereyi göster
-        self.setWindowTitle(f"Trendyol | Yorum")
+        self.setWindowTitle('Trendyol | Yorum')
         self.setWindowIcon(QIcon("img/trendyol.png"))
         self.setMinimumSize(QSize(600, 400))
         #self.setMaximumSize(QSize(600, 400))
@@ -103,28 +101,31 @@ class Pencere(QWidget):
             for i_kullanici in yorum.findAll("span", attrs={'class': 'rnr-com-usr'}):
                 yorum_sahibi.append(i_kullanici.text)
             for i_yildiz in yorum.findAll("div", attrs={'class': 'ratings readonly'}):
-                yildiz = []
-                for tek_yildiz in i_yildiz.findAll("div", attrs={'style': 'width:100%;max-width:100%'}):
-                    yildiz.append(tek_yildiz)
+                yildiz = list(
+                    i_yildiz.findAll(
+                        "div", attrs={'style': 'width:100%;max-width:100%'}
+                    )
+                )
+
                 yildiz_sayisi.append(len(yildiz))
 
         liste = []
-        for adet in range(0, len(yorum_sahibi)):
-            sozluk = {}
-            sozluk['yildiz'] = yildiz_sayisi[adet]
-            sozluk['kullanici'] = yorum_sahibi[adet]
-            sozluk['yorum'] = kullanici_yorumu[adet]
+        for adet in range(len(yorum_sahibi)):
+            sozluk = {
+                'yildiz': yildiz_sayisi[adet],
+                'kullanici': yorum_sahibi[adet],
+                'yorum': kullanici_yorumu[adet],
+            }
+
             liste.append(sozluk)
 
         sonuc = {"ad": urun_ismi.text, "link": urun, "yorumlar": liste}
 
         sonuc_json = json.dumps(sonuc, indent=2, sort_keys=True, ensure_ascii=False)
 
-        json_yaz = open(f"{urun_ismi.text}.json", "w+", encoding='utf8')
-        json_yaz.write(sonuc_json)
-        json_yaz.close()
-
-        self.outputOlustur.setText(f"\n\t\tjSon Oluşturuldu\n")
+        with open(f"{urun_ismi.text}.json", "w+", encoding='utf8') as json_yaz:
+            json_yaz.write(sonuc_json)
+        self.outputOlustur.setText('\n\t\tjSon Oluşturuldu\n')
 
         yazilan_veri = json.loads(sonuc_json)
 

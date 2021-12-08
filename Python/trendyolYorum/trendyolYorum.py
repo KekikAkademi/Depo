@@ -23,9 +23,13 @@ kullanici_yorumu = [yorum_.text for yorum_ in yorumlar.findAll('div', class_='rn
 
 yildiz_sayisi    = []
 for i_yildiz in yorumlar.findAll("div", attrs={'class':'ratings readonly'}):
-    yildiz = []
-    for tek_yildiz in i_yildiz.findAll("div", attrs={'class' : 'full', 'style':'width:100%;max-width:100%'}):
-        yildiz.append(tek_yildiz)
+    yildiz = list(
+        i_yildiz.findAll(
+            "div",
+            attrs={'class': 'full', 'style': 'width:100%;max-width:100%'},
+        )
+    )
+
     yildiz_sayisi.append(len(yildiz))
 
 liste = [
@@ -41,10 +45,8 @@ sonuc = {"urun_adi": urun_ismi, "urun_linki" : urun, "urun_yorumlari":liste}
 
 sonuc_json = json.dumps(sonuc, indent=2, sort_keys=True, ensure_ascii=False)
 
-json_yaz = open(f"{urun_ismi}.json", "w+", encoding='utf8')
-json_yaz.write(sonuc_json)
-json_yaz.close()
-
+with open(f"{urun_ismi}.json", "w+", encoding='utf8') as json_yaz:
+    json_yaz.write(sonuc_json)
 print("\n\t\tjSon Oluşturuldu\n")
 
 yazilan_veri = json.loads(sonuc_json)

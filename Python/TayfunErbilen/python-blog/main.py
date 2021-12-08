@@ -25,22 +25,19 @@ def md5(string):
 def categories():
     sql = "SELECT * FROM categories ORDER BY category_name ASC"
     cursor.execute(sql)
-    cats = cursor.fetchall()
-    return cats
+    return cursor.fetchall()
 
 
 def hasPost(url):
     sql = "SELECT post_id FROM posts WHERE post_url = %s"
     cursor.execute(sql, (url,))
-    post = cursor.fetchone()
-    return post
+    return cursor.fetchone()
 
 
 def hasUser(email):
     sql = "SELECT user_id FROM users WHERE user_email = %s"
     cursor.execute(sql, (email,))
-    post = cursor.fetchone()
-    return post
+    return cursor.fetchone()
 
 
 def timeAgo(date):

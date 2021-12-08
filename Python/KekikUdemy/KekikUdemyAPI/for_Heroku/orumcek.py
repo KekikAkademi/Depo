@@ -49,13 +49,10 @@ def TR(hangi_sayfa):
 
                 udemy_link.append(gelen_udemy)                                      # listeye Yerleştir
         #-----------------------------------------------------------------------------------------------------------------------#
-
 #-------------------------------------------------------------------------------------------------------------------#
     liste = []                                      # liste oluştur
-    for adet in range(0, len(udemy_baslik)):        # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
-        sozluk = {}                                 # sözlük oluştur
-        sozluk['kurs_adi'] = udemy_baslik[adet]     # kurs adını sözlüğe ekle
-        sozluk['kurs_linki'] = udemy_link[adet]     # kurs linkini sözlüğe ekle
+    for adet in range(len(udemy_baslik)):    # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
+        sozluk = {'kurs_adi': udemy_baslik[adet], 'kurs_linki': udemy_link[adet]}
         liste.append(sozluk)                        # sözlüğü listeye ekle
     return liste                                    # Listeyi Döndür
 
@@ -99,12 +96,9 @@ def EN(hangi_sayfa):
 
                 udemy_link.append(gelen_udemy)                                      # listeye Yerleştir
         #-----------------------------------------------------------------------------------------------------------------------#
-
 #-------------------------------------------------------------------------------------------------------------------#
     liste = []                                      # liste oluştur
-    for adet in range(0, len(udemy_baslik)):        # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
-        sozluk = {}                                 # sözlük oluştur
-        sozluk['kurs_adi'] = udemy_baslik[adet]     # kurs adını sözlüğe ekle
-        sozluk['kurs_linki'] = udemy_link[adet]     # kurs linkini sözlüğe ekle
+    for adet in range(len(udemy_baslik)):    # 0'dan Başlayarak, Dönen "başlık" sayısı kadar "adet" oluştur
+        sozluk = {'kurs_adi': udemy_baslik[adet], 'kurs_linki': udemy_link[adet]}
         liste.append(sozluk)                        # sözlüğü listeye ekle
     return liste                                    # Listeyi Döndür

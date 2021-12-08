@@ -24,23 +24,14 @@ args = parser.parse_args()
 if args.speed == "slow":
     lock = threading.Semaphore(1)
     tsleep = 2
-elif args.speed == "normal":
+elif args.speed == "normal" or args.speed != "aggressive":
     lock = threading.Semaphore(5)
     tsleep = 1
-elif args.speed == "aggressive":
+else:
     lock = threading.Semaphore(50)
     tsleep = 0
-else:
-    lock = threading.Semaphore(5)
-    tsleep = 1
-
-if "/" not in args.url[-1]:
-    target = (args.url + "/")
-    print(target)
-else:
-    target = args.url
-    print(target)
-
+target = (args.url + "/") if "/" not in args.url[-1] else args.url
+print(target)
 targetList = []
 savelist = []
 
@@ -69,13 +60,11 @@ def check_panel(url):
         if len(check_input) >= 1:
             if valueuser or valuepass or valueuser1 or valuepass1 is not None:
                 print("[{}]{} Found a Login Form!".format(str(status_code), url))
-                savelist.append(url + "\n")
             else:
                 print("[{}]{} Found a form! Please check it manually.".format(str(status_code), url))
-                savelist.append(url + "\n")
         else:
             print("[{}]{} Please check it manually.".format(str(status_code), url))
-            savelist.append(url+"\n")
+        savelist.append(url + "\n")
     else:
         printline(url)
     time.sleep(int(tsleep))

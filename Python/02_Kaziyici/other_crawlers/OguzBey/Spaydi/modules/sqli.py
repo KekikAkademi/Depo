@@ -142,8 +142,7 @@ class SqlInjection(object):
                 _text = _text.format(B_WHITE, RESET, YELLOW)
                 print("{} {} --> {}".format(_text, url['url'], url['param']))
 
-if __name__ == '__main__':
-    pass
+pass
     # b = []
     # a = open('test.txt','r').read().splitlines()
     # import ast

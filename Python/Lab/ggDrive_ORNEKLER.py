@@ -81,7 +81,7 @@ def gDriveDosyaYukle(yerel_dosya_adi):
             nerdeyiz = ortak_drivelar['drives'][say]['name']
 
     mime_turu = guess_type(yerel_dosya_adi)[0]
-    mime_turu = mime_turu if mime_turu else "text/plain"
+    mime_turu = mime_turu or "text/plain"
 
     govde = {
         "name": yerel_dosya_adi,
@@ -89,14 +89,14 @@ def gDriveDosyaYukle(yerel_dosya_adi):
         "mimeType": mime_turu,
         "parents": [ortak_drive_id]
     }
-    
+
     dosya_govde = MediaFileUpload(yerel_dosya_adi, mimetype=mime_turu, chunksize=50*1024*1024, resumable=True)
     yuklenen_dosya = drive_service.files().create(body=govde, media_body=dosya_govde, supportsAllDrives=True)
     dosya_bilgi = yuklenen_dosya.execute()
 
     yanit = None
     gorunen_mesaj = ""
-    while yanit == None:
+    while yanit is None:
         durum, yanit = yuklenen_dosya.next_chunk()
         if durum:
             print(dosya_bilgi.get('name'))
@@ -109,16 +109,16 @@ def gDriveDosyaYukle(yerel_dosya_adi):
                 "".join(["○" for i in range(20 - math.floor(yuzde / 5))]),
                 round(yuzde, 2),
             )
-            
+
             gecerli_mesaj = f"**Arşive yüklüyorum kanka..**\n**Dosya Adı**: `{yerel_dosya_adi}`\n{progress_str}"
-            
+
             if gorunen_mesaj != gecerli_mesaj:
                 try:
                     print(gecerli_mesaj)
                     gorunen_mesaj = gecerli_mesaj
                 except:
                     pass
-    
+
     return f"\nŞu Konuma: `{nerdeyiz}` >> `{ortak_drive_id}`\n\n\tDosya Yüklendi: `{yanit.get('name')}` >> `{yanit.get('id')}`"
 
 # print(gDriveDosyaYukle('VNC-Viewer-6.20.113-Linux-x64'))
@@ -182,11 +182,17 @@ def gDriveDosyaAra():
     sonuclar = []
     sayfa_token = None
     while True:
-        drive_yaniti = drive_service.files().list(
-            q=f"mimeType='text/plain'",
-            spaces="drive",
-            fields="nextPageToken, files(id, name, mimeType)",
-            pageToken=sayfa_token).execute()
+        drive_yaniti = (
+            drive_service.files()
+            .list(
+                q="mimeType='text/plain'",
+                spaces="drive",
+                fields="nextPageToken, files(id, name, mimeType)",
+                pageToken=sayfa_token,
+            )
+            .execute()
+        )
+
         # filtrelenmiş dosyaları yineleyin
         for dosya in drive_yaniti.get("files", []):
             sonuclar.append((dosya["id"], dosya["name"], dosya["mimeType"]))

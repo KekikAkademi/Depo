@@ -52,26 +52,18 @@ class Main(object):
 
     def get_args(self, args):
         self.logger.info("get_args() started.")
-        _args = dict()
-        for i in range(0, len(args), 2):
-            _args.update({args[i]:args[i+1]})
 		# self.logger.debug("get_args() return --> {}".format(_args))
-        return _args
+        return {args[i]: args[i+1] for i in range(0, len(args), 2)}
 
     def check_args(self, args):
         self.logger.info("check_args() started.")
-        for i in args:
-            if i not in self.my_args:
-                return False
-        return True
+        return all(i in self.my_args for i in args)
 
     def write_file(self, listt, path, tire=False):
         self.logger.info("write_file() started.")
         if tire is False:
             with open(path, "w") as fl:
-                _write = ""
-                for i in listt:
-                    _write += "{}\n".format(i)
+                _write = "".join("{}\n".format(i) for i in listt)
                 _write = _write.rstrip("\n")
                 fl.write(_write)
         else:
@@ -95,7 +87,7 @@ class Main(object):
         _args = self.get_args(self.args)
         if not self.check_args(_args):
             help()
-        if not '--url' in _args:
+        if '--url' not in _args:
             help()
         _check = _args['--check'] if '--check' in _args else None
         if _check: # sqli, XSS, ...
@@ -199,7 +191,7 @@ def main():
     logger.info("main() started.")
     del sys.argv[0]
     argc = len(sys.argv)
-    if argc in [2, 3, 4, 5, 6, 7, 9]:
+    if argc in {2, 3, 4, 5, 6, 7, 9}:
         Main(sys.argv).start()
     else:
         help()

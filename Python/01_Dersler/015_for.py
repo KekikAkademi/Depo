@@ -8,7 +8,7 @@ for esans in kokular:
 
 for esans in kokular:
     if esans != "kekik":
-        print(f"{esans} kısaltması = {esans[0:3]}")
+        print(f'{esans} kısaltması = {esans[:3]}')
     #print("***********************")
 
 print()

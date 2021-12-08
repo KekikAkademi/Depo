@@ -13,10 +13,10 @@ print(list(filterTest2))
 
 
 def asalSayi(sayi):
-    sayac = 2
-    if sayi == 2 : return True
+    if sayi == 2: return True
     elif sayi < 2 : return False
     else:
+        sayac = 2
         while(sayac < sayi):
             if sayi%sayac == 0 : return False
             sayac += 1

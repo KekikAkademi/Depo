@@ -30,14 +30,10 @@ def ekle():
 @app.route('/tamamla/<int:id>', methods = ['GET'])
 def tamamla(id):
     sor = Yap.query.filter_by(id=id).first()
-    
-    if sor.tamam == False:
-        sor.tamam = True
-    else:
-        sor.tamam = False
-    
+
+    sor.tamam = sor.tamam == False
     db.session.commit()
-    
+
     return redirect(url_for('anaSayfa'))
 
 @app.route('/sil/<int:id>', methods = ['GET'])

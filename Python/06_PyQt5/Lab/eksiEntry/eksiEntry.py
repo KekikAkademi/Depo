@@ -62,10 +62,7 @@ class Pencere(QWidget):             # Penceremizi Oluşturduk
         html = requests.get(url, headers=kimlik)  # link'in içerisindeki bütün html dosyasını indiriyoruz.
         kaynak = BeautifulSoup(html.content,"html5lib")  # bitifulsup ile html'i işlememiz gerekiyor / html5lib'i kullandık
 
-        liste = []
-        for i in kaynak.find_all("div", attrs={"class": "content"}):
-            liste.append(i.text)
-
+        liste = [i.text for i in kaynak.find_all("div", attrs={"class": "content"})]
         toplamYazi = ""
         for i in liste:
             toplamYazi = toplamYazi + i + "\n"

@@ -1,18 +1,13 @@
-dosya = open("anasinin_nikahi.txt", "w", encoding="utf-8")
-yazi = "fuuuuk"
-dosya.write(f"Yazı {yazi}")
-dosya.close()
-
+with open("anasinin_nikahi.txt", "w", encoding="utf-8") as dosya:
+    yazi = "fuuuuk"
+    dosya.write(f"Yazı {yazi}")
 #------------------------------------------#
 
 esya = ["yatak", "masa", "dolap"]
 
-metin = open("nesne.txt","w",encoding="utf-8")
-
-for i in esya:
-    metin.write(f"{i}\n")
-
-metin.close()
+with open("nesne.txt","w",encoding="utf-8") as metin:
+    for i in esya:
+        metin.write(f"{i}\n")
 
 #------------------------------------------#
 

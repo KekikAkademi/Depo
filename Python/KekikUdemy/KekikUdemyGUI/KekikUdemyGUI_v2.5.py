@@ -50,8 +50,6 @@ def WindowsTerminaliGizle():                        # WindowsTerminaliGizle adı
         import win32console, win32gui               # Gerekli Modüller                                      #
         terminal = win32console.GetConsoleWindow()  # Terminal adlı değişken                                #
         win32gui.ShowWindow(terminal, 0)            # Görünmez yap                                          #
-    else:                                           # Eğer İşletim Sistemi "Windows" değilse                #
-        pass                                        # Boşver :)                                             #
 WindowsTerminaliGizle()     # Eğer Windows'da Terminalin gizlenmesini istiyosanız aktifleştirin             #
                             # -- pyinstaller -i udemy.ico --onefile --noconsole KekikUdemyGUI.py --         #
 #############################################################################################################
@@ -351,7 +349,7 @@ class AnaSayfa(QMainWindow):
 
             self.alinanKurslar.append(f"\t[*] {link} | Burdayım !\n")       # TextEdit'e ekle
             self.alinanKurslar.repaint()                                    # TextEdit'i güncelle
-            
+
             #------------------------------------------------------------------------------------------------------------------------#
             for discount_linkler in kaynak.findAll('a', attrs={'href': re.compile("^https://www.real.discount/offer/")}):
                 gelen_discount = discount_linkler['href']
@@ -366,20 +364,17 @@ class AnaSayfa(QMainWindow):
 
                     self.alinanKurslar.append(f"[+] {gelen_udemy} | BULDUM !\n\n")  # TextEdit'e ekle
                     self.alinanKurslar.repaint()                                    # TextEdit'i güncelle
-                    #----------------------------------------------------#
-                    gelen_udemy_kaydet = open("UdemyeGiderken.txt", "a")
-                    gelen_udemy_kaydet.write(gelen_udemy + "\n")
-                    gelen_udemy_kaydet.close()
-                    #----------------------------------------------------#
-        
+                    with open("UdemyeGiderken.txt", "a") as gelen_udemy_kaydet:
+                        gelen_udemy_kaydet.write(gelen_udemy + "\n")
+                                #----------------------------------------------------#
+
         #---------------------------------------------------------#
         lines_seen = set()              # holds lines already seen
-        outfile = open("RealDiscount.txt", "a")
-        for line in open("UdemyeGiderken.txt", "r"):
-            if line not in lines_seen:  # not a duplicate
-                outfile.write(line)
-                lines_seen.add(line)
-        outfile.close()
+        with open("RealDiscount.txt", "a") as outfile:
+            for line in open("UdemyeGiderken.txt", "r"):
+                if line not in lines_seen:  # not a duplicate
+                    outfile.write(line)
+                    lines_seen.add(line)
         os.remove("UdemyeGiderken.txt")
         #---------------------------------------------------------#
         #---------------------------------------------------------------------------#

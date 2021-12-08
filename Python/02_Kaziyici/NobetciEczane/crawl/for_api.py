@@ -30,11 +30,13 @@ def ECZANE(il,ilce):
             eczane_telefonu.append(telefon.text)
 
     liste = []
-    for adet in range(0, len(eczane_adi)):
-        sozluk = {}
-        sozluk['eczane_adi'] = eczane_adi[adet]
-        sozluk['eczane_adresi'] = eczane_adresi[adet]
-        sozluk['eczane_telefonu'] = eczane_telefonu[adet]
+    for adet in range(len(eczane_adi)):
+        sozluk = {
+            'eczane_adi': eczane_adi[adet],
+            'eczane_adresi': eczane_adresi[adet],
+            'eczane_telefonu': eczane_telefonu[adet],
+        }
+
         liste.append(sozluk)
 
     #print(liste)

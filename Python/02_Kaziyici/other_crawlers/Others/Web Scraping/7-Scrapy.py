@@ -11,5 +11,5 @@ class GeeksSpider(scrapy.Spider):
     def parse(self, response): 
           
         SET_SELECTOR = 'geeks'
-        for geek in response.css(SET_SELECTOR): 
+        for _ in response.css(SET_SELECTOR): 
             pass

@@ -24,25 +24,19 @@ while True: #İşlemlerimizi sonsuz döngü içinde yapıyoruz.
 
     #Eğer bir yazi başlığı boş bir değer ise yani yeni haber paylaşıl-
     #madıysa
-    if  yaziBaslik == None:
+    if yaziBaslik is None:
         print("[-] Yeni bir haber paylasilmamis.")
-    #Eğer bir yazi başlığı varsa (bu deger boş değilse) işlemlerimiz bu-
-    #rada yapılacak.
-    elif yaziBaslik != None:
+    else:
         print("[+] Yeni bir Haber Bulundu.")
         #Beautful soup ile içerik kısmını HTML olarak çekiyoruz.
         yaziIcerikHTML = soup.find_all("p")
-        icerik = ""
-        #burada bir liste şeklimde bulunan HTML içeriki tek bir değişke-
-        #ne aktarıp (icerik adında), HTML kısımlarını temizliyoruz.
-        for i in yaziIcerikHTML:
-            icerik = icerik + i.text.encode('utf-8').decode()
+        icerik = "".join(i.text.encode('utf-8').decode() for i in yaziIcerikHTML)
         #İçerik ve başlığı birleştirip hepsini bir bütün haline getiriyoruz.
         #upper() ile başlığın bütün harflerini büyük yapıyoruz.
         fullYazi = yaziBaslik.text.encode('utf-8').decode().upper()+"\n"+icerik
         print(fullYazi)
         print("[+] İcerikler Haber Sitesinden Çekildi")
-        
+
         print("""
         Burada islemlerinizi yapabilirsiniz
         ben facebook daki bir sayfamda
@@ -52,8 +46,8 @@ while True: #İşlemlerimizi sonsuz döngü içinde yapıyoruz.
         #yor bunun içinde id değerimiz bir arttırıyoruz. Ve bu değere dönüp bak-
         #tığında program yeni bir yazı yoksa olana kadar beklicek ve olunca yine
         #buraya gellip bu değeri arttıracak.
-        id = id+1
-    
+        id += 1
+
     #Program sürekli değil de 60 saniyelik aralıklarla yeni bir haber paylaşılmış-
     #mı diye baksın
     time.sleep(60)

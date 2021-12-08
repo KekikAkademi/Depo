@@ -19,7 +19,7 @@ for ip in ipListesi:
             if port == 22:
                 print("\t[!] Sistem Linux veya Network Cihazı Olabilir!")
                 with open("linux.txt", "a", encoding="utf-8") as linuxDosya: linuxDosya.write(f"{ip}\n")
-            elif port == 135 or port == 137 or port == 445:
+            elif port in [135, 137, 445]:
                 print("\t[!] Sistem Windows Olabilir!")
                 with open("windows.txt", "a", encoding="utf-8") as windowsDosya: windowsDosya.write(f"{ip}\n")
 

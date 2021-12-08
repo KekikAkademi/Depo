@@ -36,4 +36,4 @@ bitis = tarih_cevir('03-04-2021 01:42:06') # bi_ay_sonra
 fark    = bitis - bugun
 sn_fark = round(fark.total_seconds())
 
-print(f"Kalan Süre  : {str(zaman_donustur(sn_fark))}")
+print(f'Kalan Süre  : {zaman_donustur(sn_fark)}')

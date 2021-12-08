@@ -57,23 +57,23 @@ def dovizVerileri(cikti='gorsel_veri', birim=None):
 
     if cikti == 'json_veri':
         return json.loads(pandaVeri.to_json(orient='records'))
-    
+
     elif cikti == 'json_gorsel':
         return json.dumps(jsonVeri, indent=2, sort_keys=False, ensure_ascii=False)
-    
+
     elif cikti == 'json' and birim != None:
         birim = birim.upper()
 
         for bul in range(len(jsonVeri)):
             if jsonVeri[bul]['Birim'] == birim:
                 return jsonVeri[bul]
-    
+
     elif cikti == 'basliklar':
-        return [anahtar for anahtar in jsonVeri[0].keys()]
-    
+        return list(jsonVeri[0].keys())
+
     elif cikti == 'gorsel_veri':
         return tabulate(pandaVeri, headers='keys', tablefmt='psql')
-    
+
     else:
         return kullanim
 

@@ -43,20 +43,20 @@ def sonDakika(cikti='gorsel_veri'):
                 "Link" : "https://www.ntv.com.tr" + haberManset[adet].a['href']
             })
 
-    basliklar = [anahtar for anahtar in liste[0].keys()]
+    basliklar = list(liste[0].keys())
 
     if cikti == 'json_veri':
         return liste
-    
+
     elif cikti == 'json_gorsel':
         return json.dumps(liste, indent=2, sort_keys=False, ensure_ascii=False)
-    
+
     elif cikti == 'gorsel_veri':
         return tabulate(liste, headers='keys', tablefmt='psql')
-    
+
     elif cikti == 'basliklar':
         return basliklar
-    
+
     else:
         return kullanim
 

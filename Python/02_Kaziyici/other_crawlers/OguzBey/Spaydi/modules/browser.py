@@ -30,14 +30,17 @@ class Browser(object):
             self.useragents = fl.read().splitlines()
 
     def _header(self, cookie=None):
-        header = {'User-Agent':choice(self.useragents)}
-        header.update({'Referer':'https://www.gogle.com'})
+        header = {
+            'User-Agent': choice(self.useragents),
+            'Referer': 'https://www.gogle.com',
+        }
+
         fw_ip = "{}.{}.{}.{}".format(randint(1,255), randint(1,255),
                                      randint(1,255), randint(1,255))
-        header.update({'X-Forwarded-Host': '{}'.format(fw_ip)})
+        header['X-Forwarded-Host'] = '{}'.format(fw_ip)
         if cookie is None:
             return header
-        header.update({'Cookie':cookie})
+        header['Cookie'] = cookie
         return header
 
     def _set_info(self, resp):

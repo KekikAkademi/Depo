@@ -8,12 +8,11 @@ def anaSayfa():
 
 @app.route('/toplam', methods = ['GET', 'POST'])
 def toplam():
-    if request.method == 'POST':
-        sayi1 = int(request.form.get('sayi1'))
-        sayi2 = int(request.form.get('sayi2'))
-        return render_template('sayilar.html', toplam = sayi1 + sayi2)
-    else:
+    if request.method != 'POST':
         return render_template('sayilar.html')
+    sayi1 = int(request.form.get('sayi1'))
+    sayi2 = int(request.form.get('sayi2'))
+    return render_template('sayilar.html', toplam = sayi1 + sayi2)
 
 
 if __name__ == "__main__":

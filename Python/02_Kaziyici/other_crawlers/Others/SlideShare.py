@@ -9,33 +9,34 @@ url=input("Lütfen İndirmek istediğiniz slayt dosyasının bulunduğu web urls
 response=urllib.request.urlopen(url)
 data=response.read()
 response.close()
-liste=[]
 #elde ettiğimiz dosyayı aşağıda parse ediyoruz ve gerekli olan kısımları Liste adındaki listede tutuyoruz.
 soup=BeautifulSoup(data,"html.parser")
-for i in soup.find_all("img",attrs={"class":"slide_image"}):
-    liste.append(i["data-full"])
+liste = [
+    i["data-full"]
+    for i in soup.find_all("img", attrs={"class": "slide_image"})
+]
+
 sayaç=0
 
 #benim yaptığım örnek 300 sayfalı bir slayt idi onda hatasız bir şekilde ilerledi.
 #liste tam istediğim şekilde oluştu o yüzden ekstra işlem yapmama gerek kalmadı 300 sayısınıda listenin len özelliğini kullanrak aldım
 #indirdiğim resimleri mevcut dizine kayıt ettirdim.
 for i in liste:
-    sayaç=sayaç+1
+    sayaç += 1
     image=urllib.request.urlopen(i)
     byte=image.read()
     image.close()
-    f=open(str(sayaç)+".jpg","wb")
-    f.write(byte)
-    f.close()
+    with open(str(sayaç)+".jpg","wb") as f:
+        f.write(byte)
     print(sayaç,"nolu sayfa bitti.")
-    
+
 
 #burasıda pdf haline getirdiğim kısım zaten basit
 sayaç=0
 imagelist=[]
 pdf = FPDF()
 while sayaç<int(len(liste)):
-    sayaç=sayaç+1
+    sayaç += 1
     imagelist.append(str(sayaç)+".jpg")
 
 print("Bir kısım İşlem tamamlandı.")

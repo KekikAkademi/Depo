@@ -19,13 +19,11 @@ option = str(input())
 
 if option == '1':
         amount = int(input('Enter Amount of codes: '))
-        fix = 0
         f = open('giftcards.txt','a')
-        while fix <= amount:
+        for fix in range(1, amount + 2):
                 code = ('').join(random.choices(string.ascii_letters.upper() + string.digits.upper(), k=13))
                 f.write(code.upper() + '\n')
                 print(Fore.GREEN + code.upper())
-                fix += 1
                 ctypes.windll.kernel32.SetConsoleTitleW("Generated Codes: " + str(fix) + "/" + str(amount))
 if option == '2':
         giftcards = []
@@ -58,11 +56,11 @@ if option == '2':
                         valid += 1
                         safe_print(Fore.GREEN + '[Valid] ' + giftcards[num])
                         save(giftcard[num])
-                        ctypes.windll.kernel32.SetConsoleTitleW("Amazon Checker | Checked: " + str(num) + "/" + str(len(giftcards)) + " | Valid: " + str(valid) + " | Invalid: " + str(invalid) + " | Developed by Sleep")
                 else:
                         safe_print(Fore.RED + '[Invalid] ' + giftcards[num])
                         invalid += 1
-                        ctypes.windll.kernel32.SetConsoleTitleW("Amazon Checker | Checked: " + str(num) + "/" + str(len(giftcards)) + " | Valid: " + str(valid) + " | Invalid: " + str(invalid) + " | Developed by Sleep")
+
+                ctypes.windll.kernel32.SetConsoleTitleW("Amazon Checker | Checked: " + str(num) + "/" + str(len(giftcards)) + " | Valid: " + str(valid) + " | Invalid: " + str(invalid) + " | Developed by Sleep")
 
         load_accounts()
 

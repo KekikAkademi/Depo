@@ -27,7 +27,7 @@ def coinMarket(cikti='gorsel_veri', baslik=None):
                 coinMarket("basliklar")
     """
 
-    url = f"https://coinmarketcap.com/tr/"
+    url = 'https://coinmarketcap.com/tr/'
     kimlik = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
 
     istek = requests.get(url, headers=kimlik)
@@ -66,25 +66,25 @@ def coinMarket(cikti='gorsel_veri', baslik=None):
         except:
             pass
 
-    basliklar = [anahtar for anahtar in liste[0].keys()]
+    basliklar = list(liste[0].keys())
 
     if cikti == 'json_veri':
         return liste
-    
+
     elif cikti == 'json_gorsel':
         return json.dumps(liste, indent=2, sort_keys=False, ensure_ascii=False)
-    
+
     elif cikti == 'json' and baslik != None:
-        for bul in range(len(liste)):
-            if liste[bul]['Ad'] == baslik:
-                return liste[bul]
-    
+        for item in liste:
+            if item['Ad'] == baslik:
+                return item
+
     elif cikti == 'basliklar':
         return basliklar
-    
+
     elif cikti == 'gorsel_veri':
         return tabulate(liste, headers='keys', tablefmt='psql')
-    
+
     else:
         return kullanim
 

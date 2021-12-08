@@ -23,11 +23,8 @@ def JsonAl():
 
     res = conn.getresponse()
     data = res.read()
-    #print(data.decode("utf-8"))
-
-    json_yaz = open("Kekik.json", "w+")
-    json_yaz.write(data.decode("utf-8"))
-    json_yaz.close()
+    with open("Kekik.json", "w+") as json_yaz:
+        json_yaz.write(data.decode("utf-8"))
 
 def JsonOku():
     import json

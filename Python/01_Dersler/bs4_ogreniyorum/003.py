@@ -3,6 +3,7 @@
 -Yeni görevin ; Döngü ile kazınılan veriyi döngü dışında tut(kaydet) ve
 -Write argümanı ile tek seferde yaz ( append ile değil :))   )
 """
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -27,10 +28,7 @@ print(yazarListe)
 open("tarifler2.txt", "w+").close()
 
 for adet in range(len(adListe)):
-    dosya = open("tarifler2.txt", "a", encoding="utf-8")
-
-    dosya.write(f"""Yemeğimizin Adı : {adListe[adet]}
+    with open("tarifler2.txt", "a", encoding="utf-8") as dosya:
+        dosya.write(f"""Yemeğimizin Adı : {adListe[adet]}
         Tarifimizin Yazarı : {yazarListe[adet]} 
     """)
-
-    dosya.close()

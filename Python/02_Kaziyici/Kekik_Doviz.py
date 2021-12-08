@@ -100,12 +100,12 @@ def Doviz(): # Doviz adında bir metod oluşturduk
     #print(rakam)
     #print(oran)
     # haaarika
-    
-    for i in range(0,len(isim)): # döngüyü isim tablosunun elemanı kadar sürdür
+
+    for i in range(len(isim)): # döngüyü isim tablosunun elemanı kadar sürdür
         print(Fore.MAGENTA + "*"*30 + "\n" + Fore.GREEN + "{} ".format(isim[i]) + Fore.RED + ">>" + Fore.YELLOW + " {} ".format(rakam[i]) + Fore.RED + ">>" + Fore.CYAN + " {}".format(oran[i]) + "\n" + Fore.MAGENTA + "*"*30)
 
     print("\n\t" + Fore.YELLOW + "Teşekkürler doviz.com")
-    
+
     time.sleep(10) # DDoS gibi olmaması için 10 saniye aralık la yap bu işi
     Temizle() # Temizle metodumuzu çağırdık
     OturumBilgisi() # OturumBilgisi metodumuzu çağırdık

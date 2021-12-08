@@ -20,10 +20,13 @@ def islemler(client, message):
 
     for eleman in liste:
         eleman.replace('\n\n', '\n')
-        if len(eleman.split()) == 6:
-            if eleman.split()[0].endswith(".exe") and eleman.split()[0] not in kayit:
-                kayit.append(eleman.split()[0])
-                islemler += f"`{eleman.split()[0]}`" + "\n"
+        if (
+            len(eleman.split()) == 6
+            and eleman.split()[0].endswith(".exe")
+            and eleman.split()[0] not in kayit
+        ):
+            kayit.append(eleman.split()[0])
+            islemler += f"`{eleman.split()[0]}`" + "\n"
 
     mesaj += islemler
     mesaj += f"\nÇalışan Program Sayısı : `{len(islemler.split())}`"

@@ -33,9 +33,9 @@ soyadlar = ["Taş", "Özer", "Aktaş", "Bozkurt", "Keski̇n", "Işik", "Teki
 
 def isim_uret(cinsiyet):
     kullanilacakisimler = []
-    if cinsiyet == "kadin" or cinsiyet == "kadın" or cinsiyet == "woman":
+    if cinsiyet in ["kadin", "kadın", "woman"]:
         kullanilacakisimler = kadinisimler
-    elif cinsiyet == "erkek" or cinsiyet == "man":
+    elif cinsiyet in ["erkek", "man"]:
         kullanilacakisimler = erkekisimleri
     else:
         raise ValueError("cinsiyet parameter have to be one of that: kadin, kadın, woman, erkek, man")
@@ -52,7 +52,7 @@ def isim_uret(cinsiyet):
 
 def isimler_uret(cinsiyet, adet=10):
     liste = []
-    for i in range(1, adet):
+    for _ in range(1, adet):
         uretilen = isim_uret(cinsiyet)
         liste.append(uretilen)
     return liste

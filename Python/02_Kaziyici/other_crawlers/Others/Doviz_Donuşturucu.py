@@ -16,8 +16,8 @@ print("Para Birimleri: CAD, HKD, ISK, PHP, DKK, HUF, CZK, GBP, RON, SEK, IDR"
       "INR, BRL, RUB, HRK, JPY, THB, CHF, EUR, MYR, BGN, TRY,"
       "CNY, NOK, NZD, ZAR, USD, MXN, SGD, AUD, ILS, KRW, PLN")
 
+api_url = "https://api.exchangeratesapi.io/latest?base="
 while True:
-    api_url = "https://api.exchangeratesapi.io/latest?base="
     doviz_boz = input("Bozmak istediğiniz döviz türü: \n")
     doviz_alinan = input("Almak istediğiniz döviz türü: \n")
     miktar = int(input("Ne kadar {} bozdurmak istiyorsunuz: \n".format(doviz_boz)))

@@ -211,9 +211,10 @@ class Post:
                      'Sec-Fetch-Mode':'cors', 
                      'Referer':'https://www.disneyplus.com/login/password'}
                     sexx = session.get(apx, headers=headers).text
-                    if 'Disney Plus Monthly with 7 Day Free Trial' in sexx:
-                        Output().put(email, password, False)
-                    elif 'name' not in sexx:
+                    if (
+                        'Disney Plus Monthly with 7 Day Free Trial' in sexx
+                        or 'name' not in sexx
+                    ):
                         Output().put(email, password, False)
                     else:
                         cap = self.find_between(sexx, 'name":"', '"')

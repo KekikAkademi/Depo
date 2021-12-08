@@ -16,10 +16,9 @@ class Pencere(QWidget):             # Penceremizi Oluşturduk
 
     def setUI(self):
         print("Kemik")
-
 #########################################################
         self.show()                                     # Pencereyi göster
-        self.setWindowTitle(f"Pencere Başlığı")         # Pencere Başlığımızı Belirledik
+        self.setWindowTitle('Pencere Başlığı')
         self.setWindowIcon(QIcon("img/kekik.png"))      # Pencere İkonumuzu Belirledik
         self.setMinimumSize(QSize(750, 500))            # Pencere Min. Ebat Tanımladık
         self.setMaximumSize(QSize(750, 750))            # Pencere Max. Ebat Tanımladık

@@ -59,7 +59,6 @@ def WindowsTerminaliGizle():
         import win32console, win32gui
         terminal = win32console.GetConsoleWindow()
         win32gui.ShowWindow(terminal, 0)
-    else:pass
 #WindowsTerminaliGizle() # Eğer Windows'da Terminalin gizlenmesini istiyosanız aktifleştirin
                          # -- pyinstaller -i udemy.ico --onefile --noconsole KekikUdemyGUI.py --
 
@@ -75,7 +74,6 @@ def WindowsBildirimi():
         from win10toast import ToastNotifier
         bildirim = ToastNotifier()
         bildirim.show_toast(f"{pencere_basligi}", "Telegram : @KekikAkademi", icon_path=None, duration=10, threaded=True)
-    else:pass
 WindowsBildirimi()
 #------------------------------------------------------------------------------------------------------------------------#
 

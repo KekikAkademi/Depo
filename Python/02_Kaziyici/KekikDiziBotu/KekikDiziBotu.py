@@ -49,16 +49,14 @@ for dizi_adresleri in soup.findAll('loc'):                              # Örüm
 
 
 def DiziUlkesiFantezi():
-    diziBilgi = []
-    for diziData in dizi_icerik.findAll("a", attrs={"rel": "tag"}):
-        diziBilgi.append(diziData.text)
+    diziBilgi = [
+        diziData.text
+        for diziData in dizi_icerik.findAll("a", attrs={"rel": "tag"})
+    ]
+
     a = ''.join(map(str, diziBilgi[1]))[0]
     if a != '2':
         diziUlkesi = ', '.join(map(str, diziBilgi[:2]))
-        print(diziUlkesi)
-    elif a == '1':
-        diziUlkesi = ', '.join(map(str, diziBilgi[:1]))
-        print(diziUlkesi)
     else:
         diziUlkesi = ', '.join(map(str, diziBilgi[:1]))
-        print(diziUlkesi)
+    print(diziUlkesi)

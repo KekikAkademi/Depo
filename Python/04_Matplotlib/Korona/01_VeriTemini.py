@@ -35,5 +35,5 @@ gorselVeri = tabulate(pandaVeri, headers='keys', tablefmt='github')
 print(gorselVeri)
 with open("GorselVeri.md", "w+") as dosya : dosya.write(gorselVeri)
 
-anahtarlar = [anahtar for anahtar in jsonVeri[0].keys()]
+anahtarlar = list(jsonVeri[0].keys())
 #print(anahtarlar)

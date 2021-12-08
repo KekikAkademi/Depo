@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-link = f"https://www.eczaneler.gen.tr/nobetci-canakkale-merkez"
+link = 'https://www.eczaneler.gen.tr/nobetci-canakkale-merkez'
 kimlik = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'}
 istek = requests.get(link, kimlik)
 soup = BeautifulSoup(istek.text, "html5lib")
@@ -29,10 +29,8 @@ def jSonVer():
 
     cikti = json.dumps(sozluk, indent=2, sort_keys=True, ensure_ascii=False)
 
-    json_yaz = open(f"{soup.title.text.replace(' | Eczaneler.gen.tr','')}.json", "w+", encoding='utf8')
-    json_yaz.write(cikti)
-    json_yaz.close()
-
+    with open(f"{soup.title.text.replace(' | Eczaneler.gen.tr','')}.json", "w+", encoding='utf8') as json_yaz:
+        json_yaz.write(cikti)
     print("\n\t\tjSon Oluşturuldu\n")
 
     yazilan_veri = json.loads(cikti)

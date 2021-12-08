@@ -19,12 +19,11 @@ async def tg_drive(dosya_yolu, mesaj, ortak_drive_isim=None):
     if ortak_drive_isim:
         ortak_drivelar = drive_service.drives().list(pageSize=10).execute()
         for ortak_drive in ortak_drivelar['drives']:
-            if ortak_drive['name'] == ortak_drive_isim:       # Ortak Drive ADI
-                ortak_drive_id = ortak_drive['id']
-                nerdeyiz = ortak_drive['name']
-            else:
+            if ortak_drive['name'] != ortak_drive_isim:
                 continue
 
+            ortak_drive_id = ortak_drive['id']
+            nerdeyiz = ortak_drive['name']
         govde = {
             "name": dosya_adi,
             "description": f"{bilgiler['session']} üzerinden yüklenmiştir..",
@@ -61,7 +60,7 @@ async def tg_drive(dosya_yolu, mesaj, ortak_drive_isim=None):
 
     mesaj = ""
     mesaj += f"`{nerdeyiz}` **Dizinine** " if nerdeyiz else "`Root` **Dizinine** "
-    mesaj += f"__Yükledim Kanka.. :__"
+    mesaj += '__Yükledim Kanka.. :__'
     link = f"https://drive.google.com/open?id={dosya_id}"
 
     return mesaj, link, dosya_adi

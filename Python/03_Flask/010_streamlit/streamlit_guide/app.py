@@ -18,8 +18,7 @@ def main():
 
 @st.cache
 def load_data():
-    df = data.cars()
-    return df
+    return data.cars()
 
 def visualize_data(df, x_axis, y_axis):
     graph = alt.Chart(df).mark_circle(size=60).encode(

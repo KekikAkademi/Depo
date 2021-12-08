@@ -22,6 +22,6 @@ renkler = [
 
 
 def kisir():
-    for i in range(20):
+    for _ in range(20):
         print(f'{random.choice(renkler)} Kısır Döngü')
         sleep(0.2)

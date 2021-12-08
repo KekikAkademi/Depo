@@ -37,7 +37,7 @@ class NobetciEczane(object):
         il      = il.translate(tr2eng)
         ilce    = ilce.translate(tr2eng)
 
-        kaynak  = "eczaneler.gen.tr" 
+        kaynak  = "eczaneler.gen.tr"
         url     = f"https://www.eczaneler.gen.tr/nobetci-{il}-{ilce}"
         kimlik  = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
         istek   = requests.get(url, headers=kimlik)
@@ -49,9 +49,20 @@ class NobetciEczane(object):
         try:
             for bak in bugun.findAll('tr')[1:]:
                 ad    = bak.find('span', class_='isim').text
-                mah   = None if bak.find('div', class_='my-2') == None else bak.find('div', class_='my-2').text
+                mah = (
+                    None
+                    if bak.find('div', class_='my-2') is None
+                    else bak.find('div', class_='my-2').text
+                )
+
                 adres = bak.find('span', class_='text-capitalize').text
-                tarif = None if bak.find('span', class_='text-secondary font-italic') == None else bak.find('span', class_='text-secondary font-italic').text
+                tarif = (
+                    None
+                    if bak.find('span', class_='text-secondary font-italic')
+                    is None
+                    else bak.find('span', class_='text-secondary font-italic').text
+                )
+
                 telf  = bak.find('div', class_='col-lg-3 py-lg-2').text
 
                 json['veri'].append({
@@ -80,7 +91,7 @@ class NobetciEczane(object):
 
     def anahtarlar(self):
         "kullanılan anahtar listesini döndürür."
-        return [anahtar for anahtar in self.json['veri'][0].keys()] if self.json else None
+        return list(self.json['veri'][0].keys()) if self.json else None
 
 #bakalim = NobetciEczane("İstanbul", "Beylikdüzü")
 
@@ -135,9 +146,9 @@ def nobetciEczane(il=None, ilce=None, cikti='gorsel_veri'):
     istek = requests.get(url, headers=kimlik)
     # print(istek)
     # print(istek.headers)
-    
+
     corba = BeautifulSoup(istek.content, "lxml")
-    
+
     eczane_adi = []
     eczane_adresi = []
     eczane_telefonu = []
@@ -151,29 +162,31 @@ def nobetciEczane(il=None, ilce=None, cikti='gorsel_veri'):
 
         for telefon in tablo.findAll('div', class_='col-lg-3 py-lg-2'):
             eczane_telefonu.append(telefon.text)
-        
+
     liste = []
-    for adet in range(0, len(eczane_adi)):
-        sozluk = {}
-        sozluk['eczane_adi'] = eczane_adi[adet]
-        sozluk['eczane_adresi'] = eczane_adresi[adet]
-        sozluk['eczane_telefonu'] = eczane_telefonu[adet]
+    for adet in range(len(eczane_adi)):
+        sozluk = {
+            'eczane_adi': eczane_adi[adet],
+            'eczane_adresi': eczane_adresi[adet],
+            'eczane_telefonu': eczane_telefonu[adet],
+        }
+
         liste.append(sozluk)
 
-    basliklar = [anahtar for anahtar in liste[0].keys()]
+    basliklar = list(liste[0].keys())
 
     if cikti == 'json_veri':
         return liste
-    
+
     elif cikti == 'json_gorsel':
         return json.dumps(liste, indent=2, sort_keys=False, ensure_ascii=False)
-    
+
     elif cikti == 'gorsel_veri':
         return tabulate(liste, headers='keys', tablefmt='psql')
-    
+
     elif cikti == 'basliklar':
         return basliklar
-    
+
     else:
         return kullanim
 

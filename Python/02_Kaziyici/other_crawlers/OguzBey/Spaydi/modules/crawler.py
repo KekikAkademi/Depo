@@ -8,15 +8,14 @@ class Crawler(object):
         pass
 
     def get_urls(self, source):
-        f = re.findall(r'<a href=[\'"]?([^\'">]+)', source)
-        return f
+        return re.findall(r'<a href=[\'"]?([^\'">]+)', source)
 
     def get_forms(self, source, url):
         source = source.replace("\n","")
         f = re.findall(r'<form.*?</form>', source)
         forms = []
         for i in range(len(f)):
-            attr = dict()
+            attr = {}
             """
             [
                 {
@@ -41,13 +40,13 @@ class Crawler(object):
             method = re.findall(r'method=[\'"]?([^\'"]+)', form)
             action = action[0] if action else ""
             method = method[0] if method else ""
-            attr.update({'url':url})
-            attr.update({'form_action':action})
-            attr.update({'form_method':method})
+            attr['url'] = url
+            attr['form_action'] = action
+            attr['form_method'] = method
             c_inputs = []
             inputs = re.findall(r'(<input.*?/?>)', form)
             for i in inputs:
-                input_attr = dict()
+                input_attr = {}
                 _name = re.findall(r'name=[\'"]?([^\'"]+)', i)
                 _type = re.findall(r'type=[\'"]?([^\'"]+)', i)
                 _value = re.findall(r'value=[\'"]?([^\'"]+)', i)
@@ -56,12 +55,12 @@ class Crawler(object):
                 input_type = _type[0] if _type else ""
                 input_value = _value[0] if _value else ""
                 input_placeholder = _placeholder[0] if _placeholder else ""
-                input_attr.update({'name':input_name})
-                input_attr.update({'type':input_type})
-                input_attr.update({'value':input_value})
-                input_attr.update({'placeholder':input_placeholder})
+                input_attr['name'] = input_name
+                input_attr['type'] = input_type
+                input_attr['value'] = input_value
+                input_attr['placeholder'] = input_placeholder
                 c_inputs.append(input_attr)
-            attr.update({'inputs':c_inputs})
+            attr['inputs'] = c_inputs
             forms.append(attr)
         return forms
 
@@ -74,8 +73,7 @@ class Crawler(object):
             return params_v if len(params_v) != 0 else False
         return False
 
-if __name__ == '__main__':
-    pass
+pass
     # cr = Crawler()
     # with open("../outputs/links.txt", "r") as fl:
     #   for i in fl:

@@ -3,6 +3,7 @@
 
 
 """
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -17,11 +18,6 @@ yazarListe = []
 for yemek in yemekler:
     print(yemek)
     break
-    yemekAdi = yemek.h5.text
-    yazarAdi = yemek.span.text
-
-    adListe.append(yemekAdi.upper() + " | karpuzusYemekleri.com")
-    yazarListe.append("karpuzus Ustası : " + yazarAdi.lower())
 
 
 
@@ -32,10 +28,7 @@ def dosyaKaydet():
     open("aaaaaaa.txt", "w+").close()
 
     for adet in range(len(adListe)):
-        dosya = open("aaaaaaa.txt", "a", encoding="utf-8")
-
-        dosya.write(f"{adListe[adet]}\n\t{yazarListe[adet]}\n\n")
-
-        dosya.close()
+        with open("aaaaaaa.txt", "a", encoding="utf-8") as dosya:
+            dosya.write(f"{adListe[adet]}\n\t{yazarListe[adet]}\n\n")
 
 #dosyaKaydet()

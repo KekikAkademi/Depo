@@ -11,8 +11,8 @@ keywords = {"example.com":["keyword 1", "keyword 2", "keyword 3"],
         "example1.com":["keyword 1", "keyword 2", "keyword 3"],
         "example2.com":["keyword 1", "keyword 2", "keyword 3"]}
 
-for site in keywords:
-    for keyword in keywords[site]:
+for site, value in keywords.items():
+    for keyword in value:
         Find(keyword, site)
 
 def Find(keyword, site):

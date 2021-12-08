@@ -61,9 +61,8 @@ yassMaasOrani(25,1000)
 
 
 def yassMaasOrani(a, b):           # a = yas, b = maas
-    hesap = a / b
     #print(f"Fonksiyon input : {a / b}")
-    return hesap                    # Elde Edilen Sonucu Fonksiyon Dışına Çıkart
+    return a / b
 
 yas = 25
 maas = 1000

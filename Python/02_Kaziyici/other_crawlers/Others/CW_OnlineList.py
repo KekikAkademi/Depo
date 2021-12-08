@@ -24,7 +24,7 @@ while True:
 
     # Bugün Online Olan Bütün Üyelerin Yanına
     # Şuan Bulduğumuz Üyeleri de Ekliyoruz
-    today = today + users
+    today += users
     # print(today)
 
     # Aynı Üyenin iki kere sayılmasını engelliyoruz
